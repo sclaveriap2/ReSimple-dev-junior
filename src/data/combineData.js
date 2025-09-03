@@ -15,6 +15,7 @@ export const getCombinedData = async () => {
     return {
       empresa: empresa ? empresa.NOMBRE_EMPRESA : "Desconocida",
       area: area ? area.NOMBRE_AREA : "Desconocida",
+      sueldo: area ? area.SUELDO : 0, // <- agregado
       rut: worker.RUT_TRABAJADOR,
       nombre: worker.NOMBRE_TRABAJADOR,
       edad: worker.EDAD,
