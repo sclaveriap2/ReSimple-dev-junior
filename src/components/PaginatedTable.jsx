@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { exportToExcel } from "../utils/exportToExcel";
+
 
 const PaginatedTable = ({ data }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -55,6 +57,7 @@ const PaginatedTable = ({ data }) => {
           Siguiente
         </button>
       </div>
+      <button onClick={() => exportToExcel(data)}>Descargar Excel</button>
     </div>
   );
 };
