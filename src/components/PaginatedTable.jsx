@@ -1,62 +1,72 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getCombinedData } from "../data/combineData";
 
-function PaginatedTable({ data = [] }) {
+const Pagination = () => {
+  const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
+  const rowsPerPage = 5;
 
-  // Calcular el índice de los elementos que se muestran en la página actual
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await getCombinedData();
+      setData(result);
+    };
+    fetchData();
+  }, []);
 
-  const totalPages = Math.ceil(data.length / itemsPerPage);
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
+  const indexOfLastRow = currentPage * rowsPerPage;
+  const indexOfFirstRow = indexOfLastRow - rowsPerPage;
+  const currentRows = data.slice(indexOfFirstRow, indexOfLastRow);
+  const totalPages = Math.ceil(data.length / rowsPerPage);
 
   return (
     <div>
-      <table className="table__container">
+      <h2>Lista de Trabajadores</h2>
+      <table border="1">
         <thead>
           <tr>
-            <th>RUT</th>
             <th>Empresa</th>
             <th>Área</th>
+            <th>RUT</th>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Profesión</th>
+            <th>Cargo</th>
           </tr>
         </thead>
         <tbody>
-          {currentItems.length ? (
-            currentItems.map((item, index) => (
-              <tr key={index}>
-                <td>{item.rut || ""}</td>
-                <td>{item.nombreEmpresa || ""}</td>
-                <td>{item.nombreArea || ""}</td>
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan="3" style={{ textAlign: "center" }}>No hay datos</td>
+          {currentRows.map((row, index) => (
+            <tr key={index}>
+              <td>{row.empresa}</td>
+              <td>{row.area}</td>
+              <td>{row.rut}</td>
+              <td>{row.nombre}</td>
+              <td>{row.edad}</td>
+              <td>{row.profesion}</td>
+              <td>{row.cargo}</td>
             </tr>
-          )}
+          ))}
         </tbody>
       </table>
 
-      {/* Paginación */}
-      <div className="pagination__container">
-        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-          <button
-            key={page}
-            onClick={() => handlePageChange(page)}
-            disabled={page === currentPage}
-            className={page === currentPage ? "page__active" : ""}
-          >
-            {page}
-          </button>
-        ))}
+      <div>
+        <button
+          onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+          disabled={currentPage === 1}
+        >
+          Anterior
+        </button>
+        <span> Página {currentPage} de {totalPages} </span>
+        <button
+          onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+          disabled={currentPage === totalPages}
+        >
+          Siguiente
+        </button>
       </div>
     </div>
   );
-}
+};
 
-export default PaginatedTable;
+export default Pagination;
+
