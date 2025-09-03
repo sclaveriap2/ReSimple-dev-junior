@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getCombinedData } from "../data/combineData";
-import KpiSection from "./KpiSection"; // ajusta la ruta según tu estructura
+import KpiSection from "./KpiSection"; 
 
 const Pagination = () => {
   const [data, setData] = useState([]);
