@@ -1,19 +1,8 @@
-import { useEffect, useState } from "react";
-import { getCombinedData } from "../data/combineData";
-import KpiSection from "./KpiSection"; 
+import { useState } from "react";
 
-const Pagination = () => {
-  const [data, setData] = useState([]);
+const PaginatedTable = ({ data }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const rowsPerPage = 5;
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await getCombinedData();
-      setData(result);
-    };
-    fetchData();
-  }, []);
+  const rowsPerPage = 10;
 
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
@@ -22,7 +11,6 @@ const Pagination = () => {
 
   return (
     <div>
-      <h2>Lista de Trabajadores</h2>
       <table border="1">
         <thead>
           <tr>
@@ -33,6 +21,7 @@ const Pagination = () => {
             <th>Edad</th>
             <th>Profesión</th>
             <th>Cargo</th>
+            <th>Sueldo</th>
           </tr>
         </thead>
         <tbody>
@@ -45,12 +34,13 @@ const Pagination = () => {
               <td>{row.edad}</td>
               <td>{row.profesion}</td>
               <td>{row.cargo}</td>
+              <td>{row.sueldo}</td>
             </tr>
           ))}
         </tbody>
       </table>
 
-      <div>
+      <div style={{ marginTop: "10px" }}>
         <button
           onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}
@@ -65,10 +55,10 @@ const Pagination = () => {
           Siguiente
         </button>
       </div>
-      <KpiSection rows={data} />
     </div>
   );
 };
 
-export default Pagination;
+export default PaginatedTable;
+
 

@@ -1,71 +1,41 @@
-const KpiSection = ({ rows }) => {
-  if (!rows || rows.length === 0) return <p>No hay datos para mostrar KPIs</p>;
+const KpiSection = ({ data }) => {
+  const trabajadoresPorEmpresa = {};
+  const trabajadoresPorArea = {};
+  const gastosPorEmpresa = {};
+  const gastosPorArea = {};
 
-  // Inicializar estadísticas
-  const empresaStats = {};
-  const areaStats = {};
+  data.forEach(row => {
+    // Por empresa
+    trabajadoresPorEmpresa[row.empresa] = (trabajadoresPorEmpresa[row.empresa] || 0) + 1;
+    gastosPorEmpresa[row.empresa] = (gastosPorEmpresa[row.empresa] || 0) + (row.sueldo || 0);
 
-  rows.forEach(worker => {
-    const empresa = worker.empresa || "Desconocida";
-    const area = worker.area || "Desconocida";
-    const sueldo = worker.sueldo || 0; // asumimos que en combineData ya agregaste el sueldo del JSON
-
-    // Número de trabajadores por empresa
-    if (!empresaStats[empresa]) {
-      empresaStats[empresa] = { trabajadores: 0, gastoSueldos: 0 };
-    }
-    empresaStats[empresa].trabajadores += 1;
-    empresaStats[empresa].gastoSueldos += sueldo;
-
-    // Número de trabajadores por área
-    if (!areaStats[area]) {
-      areaStats[area] = { trabajadores: 0, gastoSueldos: 0 };
-    }
-    areaStats[area].trabajadores += 1;
-    areaStats[area].gastoSueldos += sueldo;
+    // Por área
+    trabajadoresPorArea[row.area] = (trabajadoresPorArea[row.area] || 0) + 1;
+    gastosPorArea[row.area] = (gastosPorArea[row.area] || 0) + (row.sueldo || 0);
   });
 
   return (
     <div style={{ marginTop: "20px" }}>
-      <h3>📊 KPIs de todos los trabajadores</h3>
-
-      <h4>📌 Número de trabajadores por empresa</h4>
-      <ul>
-        {Object.entries(empresaStats).map(([empresa, stats], i) => (
-          <li key={i}>
-            <strong>{empresa}</strong>: {stats.trabajadores} trabajadores
-          </li>
-        ))}
-      </ul>
-
-      <h4>📌 Gastos totales mensuales por empresa</h4>
-      <ul>
-        {Object.entries(empresaStats).map(([empresa, stats], i) => (
-          <li key={i}>
-            <strong>{empresa}</strong>: ${stats.gastoSueldos.toLocaleString()}
-          </li>
-        ))}
-      </ul>
-
-      <h4>📌 Número de trabajadores por área</h4>
-      <ul>
-        {Object.entries(areaStats).map(([area, stats], i) => (
-          <li key={i}>
-            <strong>{area}</strong>: {stats.trabajadores} trabajadores
-          </li>
-        ))}
-      </ul>
-
-      <h4>📌 Gastos totales mensuales por área</h4>
-      <ul>
-        {Object.entries(areaStats).map(([area, stats], i) => (
-          <li key={i}>
-            <strong>{area}</strong>: ${stats.gastoSueldos.toLocaleString()}
-          </li>
-        ))}
-      </ul>
+      <h2>KPIs</h2>
+      <div>
+        <h3>Trabajadores por empresa</h3>
+        <pre>{JSON.stringify(trabajadoresPorEmpresa, null, 2)}</pre>
+      </div>
+      <div>
+        <h3>Trabajadores por área</h3>
+        <pre>{JSON.stringify(trabajadoresPorArea, null, 2)}</pre>
+      </div>
+      <div>
+        <h3>Gastos por empresa</h3>
+        <pre>{JSON.stringify(gastosPorEmpresa, null, 2)}</pre>
+      </div>
+      <div>
+        <h3>Gastos por área</h3>
+        <pre>{JSON.stringify(gastosPorArea, null, 2)}</pre>
+      </div>
     </div>
   );
 };
 
 export default KpiSection;
+

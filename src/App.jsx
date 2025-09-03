@@ -1,15 +1,26 @@
+import { useEffect, useState } from "react";
+import { getCombinedData } from "./data/combineData"; // combina Excel + JSON
 import PaginatedTable from "./components/PaginatedTable";
+import KpiSection from "./components/KpiSection";
 
 function App() {
-  const emptyData = []; // Por ahora vacía
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await getCombinedData();
+      setData(result);
+    };
+    fetchData();
+  }, []);
 
   return (
-    <div className="app__container">
-      <h1>Página Principal</h1>
-      <PaginatedTable data={emptyData} />
+    <div>
+      <h1>Lista de Trabajadores</h1>
+      <PaginatedTable data={data} />
+      <KpiSection data={data} />
     </div>
   );
 }
 
 export default App;
-
