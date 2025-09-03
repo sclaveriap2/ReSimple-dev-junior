@@ -1,18 +1,9 @@
+// src/components/KpiSection.jsx
+import React from "react";
+import { calcularKPIs } from "../utils/kpiUtils";
+
 const KpiSection = ({ data }) => {
-  const trabajadoresPorEmpresa = {};
-  const trabajadoresPorArea = {};
-  const gastosPorEmpresa = {};
-  const gastosPorArea = {};
-
-  data.forEach(row => {
-    // Por empresa
-    trabajadoresPorEmpresa[row.empresa] = (trabajadoresPorEmpresa[row.empresa] || 0) + 1;
-    gastosPorEmpresa[row.empresa] = (gastosPorEmpresa[row.empresa] || 0) + (row.sueldo || 0);
-
-    // Por área
-    trabajadoresPorArea[row.area] = (trabajadoresPorArea[row.area] || 0) + 1;
-    gastosPorArea[row.area] = (gastosPorArea[row.area] || 0) + (row.sueldo || 0);
-  });
+  const { trabajadoresPorEmpresa, trabajadoresPorArea, gastosPorEmpresa, gastosPorArea } = calcularKPIs(data);
 
   return (
     <div style={{ marginTop: "20px" }}>

@@ -1,15 +1,12 @@
 import { useState } from "react";
 import { exportToExcel } from "../utils/exportToExcel";
-
+import { paginateData } from "../utils/paginationUtils";
 
 const PaginatedTable = ({ data }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 10;
 
-  const indexOfLastRow = currentPage * rowsPerPage;
-  const indexOfFirstRow = indexOfLastRow - rowsPerPage;
-  const currentRows = data.slice(indexOfFirstRow, indexOfLastRow);
-  const totalPages = Math.ceil(data.length / rowsPerPage);
+  const { currentRows, totalPages } = paginateData(data, currentPage, rowsPerPage);
 
   return (
     <div>
@@ -63,5 +60,6 @@ const PaginatedTable = ({ data }) => {
 };
 
 export default PaginatedTable;
+
 
 
