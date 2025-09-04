@@ -22,7 +22,7 @@ body {
   flex-direction: column; /* para apilar elementos verticalmente */
   align-items: center; /* centrado horizontal */
   justify-content: flex-start; /* centrado vertical solo si se quiere */
-  min-width: 320px;
+  min-width: 240px;
   min-height: 100vh;
   padding: 20px;
   box-sizing: border-box;
@@ -39,5 +39,14 @@ body {
   }
   button {
     background-color: #f9f9f9;
+  }
+}
+@media (max-width: 400px) {
+  h1 {
+    font-size: 2em;
+  }
+  .filter {
+    width: 90%;
+    padding: 15px;
   }
 }

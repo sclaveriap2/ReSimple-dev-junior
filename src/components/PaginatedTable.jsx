@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { exportToExcel } from "../utils/exportToExcel";
 import { paginateData } from "../utils/paginationUtils";
+import "./PaginatedTable.css"; // Asegúrate de importar el CSS
 
 const PaginatedTable = ({ data }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -9,9 +10,9 @@ const PaginatedTable = ({ data }) => {
   const { currentRows, totalPages } = paginateData(data, currentPage, rowsPerPage);
 
   return (
-    <div>
-      <table border="1">
-        <thead>
+    <div className="paginated-table">
+      <table className="paginated-table__table">
+        <thead className="paginated-table__thead">
           <tr>
             <th>Empresa</th>
             <th>Área</th>
@@ -25,7 +26,7 @@ const PaginatedTable = ({ data }) => {
         </thead>
         <tbody>
           {currentRows.map((row, index) => (
-            <tr key={index}>
+            <tr key={index} className="paginated-table__row">
               <td>{row.empresa}</td>
               <td>{row.area}</td>
               <td>{row.rut}</td>
@@ -39,8 +40,9 @@ const PaginatedTable = ({ data }) => {
         </tbody>
       </table>
 
-      <div style={{ marginTop: "10px" }}>
+      <div className="paginated-table__pagination">
         <button
+          className="paginated-table__button"
           onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}
         >
@@ -48,18 +50,26 @@ const PaginatedTable = ({ data }) => {
         </button>
         <span> Página {currentPage} de {totalPages} </span>
         <button
+          className="paginated-table__button"
           onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
           disabled={currentPage === totalPages}
         >
           Siguiente
         </button>
       </div>
-      <button onClick={() => exportToExcel(data)}>Descargar Excel</button>
+
+      <button
+        className="paginated-table__export-button"
+        onClick={() => exportToExcel(data)}
+      >
+        Descargar Excel
+      </button>
     </div>
   );
 };
 
 export default PaginatedTable;
+
 
 
 

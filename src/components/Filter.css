@@ -36,19 +36,12 @@
   margin-bottom: 5px;
 }
 
-/* Checkbox o label de cada opción */
-.filter__checkbox-label {
-  display: block;
-  margin-bottom: 5px;
-  cursor: pointer;
-  font-size: var(--font-size);
-}
-
 /* Inputs de texto */
 .filter__input {
   width: 100%;
   padding: 6px;
   margin-top: 5px;
+  margin-right: 10px;
   border: 1px solid #ccc;
   border-radius: var(--border-radius);
   font-size: var(--font-size);
@@ -64,45 +57,23 @@
   cursor: pointer;
   font-size: var(--font-size);
   transition: background-color 0.3s ease;
+  display: flex;
+  flex-wrap: wrap; /* Para que sean responsivos */
+  gap: 10px;
+  margin-top: 5px;
 }
 
 .filter__button:hover {
-  background-color: darken(var(--main-color), 10%);
-}
-/* Grupo de botones para empresas */
-.filter__button-group {
-  display: flex;
-  flex-wrap: wrap; /* Para que sean responsivos */
-  gap: 10px;
-  margin-top: 5px;
+  background-color: darken(var(--main-color), 5%);
 }
 
-/* Botón de empresa */
-.filter__company-button {
-  background-color: #368644; /* verde pálido */
-  color: white;
-  border: none;
-  border-radius: var(--border-radius);
-  padding: 8px 12px;
-  cursor: pointer;
-  font-size: var(--font-size);
-  transition: background-color 0.3s ease;
-}
-
-/* Estado seleccionado */
-.filter__company-button--selected {
-  background-color: #00796b; /* verde más oscuro */
-}
-/* Grupo de botones para áreas */
-.filter__button-group {
-  display: flex;
-  flex-wrap: wrap; /* Para que sean responsivos */
-  gap: 10px;
-  margin-top: 5px;
-}
-
-/* Botón de área */
+.filter__company-button,
 .filter__area-button {
+  margin: 1%;
+  flex-wrap: wrap; /* Para que sean responsivos */
+  gap: 10px;
+  margin-top: 5px;
+  justify-content: center; /* centrar botones */
   background-color: #368644; /* verde pálido */
   color: white;
   border: none;
@@ -112,16 +83,35 @@
   font-size: var(--font-size);
   transition: background-color 0.3s ease;
 }
-
+.filter__company-button:hover,
+.filter__area-button:hover {
+  background-color: darken(var(--main-color), 5%);
+}
 /* Estado seleccionado */
+.filter__company-button--selected,
 .filter__area-button--selected {
   background-color: #00796b; /* verde más oscuro */
 }
 
 /* Responsividad: en pantallas pequeñas */
-@media (max-width: 276px) {
+@media (max-width: 480px) {
+  .filter__company-button,
+  .filter__area-button {
+    padding: 10px 14px;
+    font-size: 14px;
+    flex: 1 1 calc(50% - 10px); /* dos botones por fila si hay espacio */
+    text-align: center;
+  }
   .filter {
-    width: 95%;
-    padding: var(--spacing);
+    padding: 15px;
+  }
+}
+
+/* Aún más pequeños (teléfonos muy estrechos) */
+@media (max-width: 320px) {
+  .filter__company-button,
+  .filter__area-button {
+    flex: 1 1 100%; /* un botón por fila */
+    font-size: 12px;
   }
 }
