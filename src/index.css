@@ -18,7 +18,7 @@
 
 body {
   margin: 0;
-  display: flex;
+  display: block;
   flex-direction: column; /* para apilar elementos verticalmente */
   align-items: center; /* centrado horizontal */
   justify-content: flex-start; /* centrado vertical solo si se quiere */
