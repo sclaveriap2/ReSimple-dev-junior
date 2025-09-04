@@ -1,22 +1,56 @@
-// src/utils/filterUtils.js
+/**
+ * Obtener empresas únicas
+ * @param {Array} data
+ * @returns {Array}
+ */
+export const getUniqueCompanies = (data) => {
+  return [...new Set(data.map((row) => row.empresa))];
+};
 
 /**
- * Filtra los datos según los criterios seleccionados
- * @param {Array} data - Lista completa de trabajadores
- * @param {Object} filters - Filtros { empresa, area, nombre, rut }
- * @returns {Array} - Lista filtrada
+ * Obtener áreas únicas
+ * @param {Array} data
+ * @returns {Array}
  */
-export const filterData = (data, filters) => {
-  return data.filter(item => {
-    const matchEmpresa =
-      !filters.empresa || filters.empresa === "Todos" || item.empresa === filters.empresa;
-    const matchArea =
-      !filters.area || filters.area === "Todos" || item.area === filters.area;
-    const matchNombre =
-      !filters.nombre || item.nombre.toLowerCase().includes(filters.nombre.toLowerCase());
-    const matchRut =
-      !filters.rut || item.rut.includes(filters.rut);
+export const getUniqueAreas = (data) => {
+  return [...new Set(data.map((row) => row.area))];
+};
 
-    return matchEmpresa && matchArea && matchNombre && matchRut;
-  });
+/**
+ * Aplica los filtros seleccionados
+ * @param {Array} data - Lista de trabajadores
+ * @param {Object} filters - { empresas, areas, nombre, rut }
+ * @returns {Array}
+ */
+export const applyFilters = (data, { empresas, areas, nombre, rut }) => {
+  let filtered = data;
+
+  // Filtrar por empresas
+  if (empresas.length > 0) {
+    filtered = filtered.filter((row) => empresas.includes(row.empresa));
+  }
+
+  // Filtrar por áreas
+  if (areas.length > 0) {
+    filtered = filtered.filter((row) => areas.includes(row.area));
+  }
+
+  // Filtrar por nombre
+  if (nombre.trim() !== "") {
+    const normalizedName = nombre.toLowerCase();
+    filtered = filtered.filter((row) =>
+      row.nombre.toLowerCase().includes(normalizedName)
+    );
+  }
+
+  // Filtrar por RUT
+  if (rut.trim() !== "") {
+    const normalizedRut = rut.replace(/\./g, "").replace(/-/g, "").toLowerCase();
+    filtered = filtered.filter((row) => {
+      const rowRut = row.rut.replace(/\./g, "").replace(/-/g, "").toLowerCase();
+      return rowRut.includes(normalizedRut);
+    });
+  }
+
+  return filtered;
 };

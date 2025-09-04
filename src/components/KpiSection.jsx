@@ -1,5 +1,5 @@
 // src/components/KpiSection.jsx
-import React from "react";
+//import React from "react";
 import { calcularKPIs } from "../utils/kpiUtils";
 
 const KpiSection = ({ data }) => {
