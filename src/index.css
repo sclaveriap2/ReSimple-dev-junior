@@ -7,7 +7,7 @@
   color: rgba(255, 255, 255, 0.87);
 
   /* Fondo verde ReSimple */
-  --resimple-green: #2ecc71; /* verde claro ReSimple */
+  --resimple-green: #368644; /* verde claro ReSimple */
   background-color: var(--resimple-green);
 
   font-synthesis: none;

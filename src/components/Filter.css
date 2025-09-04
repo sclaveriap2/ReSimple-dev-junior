@@ -1,6 +1,6 @@
 /* Variables globales */
 :root {
-  --main-color: #007bff;
+  --main-color: #368644;;
   --bg-color: #f9f9f9;
   --text-color: #333;
   --border-radius: 5px;
@@ -18,15 +18,16 @@
   padding: 20px;
   max-width: 800px;       /* ancho máximo del filtro */
   width: 90%;             /* ancho adaptable al tamaño de pantalla */
-  background-color: #f5f5f5; /* fondo suave para destacarlo */
+  background-color: rgba(71, 70, 70, 0.8); /* gris con 80% de opacidad */ /* fondo suave para destacarlo */
   border-radius: var(--border-radius);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 /* Cada grupo dentro del filtro */
 .filter__group {
   width: 100%;             /* que ocupe todo el ancho del contenedor */
   margin-bottom: 20px;     /* espacio entre grupos */
+  align-items: center;
 }
 
 /* Títulos de los grupos */
@@ -78,7 +79,7 @@
 
 /* Botón de empresa */
 .filter__company-button {
-  background-color: #b2dfdb; /* verde pálido */
+  background-color: #368644; /* verde pálido */
   color: white;
   border: none;
   border-radius: var(--border-radius);
@@ -102,7 +103,7 @@
 
 /* Botón de área */
 .filter__area-button {
-  background-color: #b2dfdb; /* verde pálido */
+  background-color: #368644; /* verde pálido */
   color: white;
   border: none;
   border-radius: var(--border-radius);
@@ -118,7 +119,7 @@
 }
 
 /* Responsividad: en pantallas pequeñas */
-@media (max-width: 500px) {
+@media (max-width: 276px) {
   .filter {
     width: 95%;
     padding: var(--spacing);

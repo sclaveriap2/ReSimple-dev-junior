@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div>
-      <h1>Lista de Trabajadores</h1>
+      
       <Filter data={data} onFilter={setDataFiltered} />
       <PaginatedTable data={dataFiltered} />
       <KpiSection data={data} /> 
