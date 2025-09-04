@@ -39,6 +39,10 @@
   color: white;
   font-size: inherit; /* hereda tamaño dinámico */
 }
+.paginated-table__table th:nth-child(3), /* RUT */
+.paginated-table__table td:nth-child(3) {
+  width: 150px; /* aumentar para que no se corte */
+}
 
 .paginated-table__table th {
   background-color: #474646;
@@ -85,7 +89,7 @@
 }
 
 /* Responsividad para pantallas muy pequeñas */
-@media (max-width: 480px) {
+@media (max-width: 280px) {
   .paginated-table {
     padding: 15px;
   }
@@ -93,7 +97,7 @@
   .paginated-table__table td,
   .paginated-table__button,
   .paginated-table__export-button {
-    font-size: clamp(12px, 3vw, 14px);
+    font-size: clamp(2px, 3vw, 6px);
     padding: 5px 8px;
   }
 }
@@ -103,7 +107,7 @@
   .paginated-table__table td,
   .paginated-table__button,
   .paginated-table__export-button {
-    font-size: 12px;
+    font-size: 2pxpx;
     padding: 4px 6px;
   }
 }

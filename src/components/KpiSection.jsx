@@ -1,32 +1,44 @@
-// src/components/KpiSection.jsx
-//import React from "react";
+import "./KpiSection.css";
 import { calcularKPIs } from "../utils/kpiUtils";
+
+const renderKpiObject = (obj) => {
+  return (
+    <div className="kpi-section__content">
+      {Object.entries(obj).map(([key, value]) => (
+        <div key={key} className="kpi-section__row">
+          <strong>{key}:</strong> {value}
+        </div>
+      ))}
+    </div>
+  );
+};
 
 const KpiSection = ({ data }) => {
   const { trabajadoresPorEmpresa, trabajadoresPorArea, gastosPorEmpresa, gastosPorArea } = calcularKPIs(data);
 
   return (
-    <div style={{ marginTop: "20px" }}>
-      <h2>KPIs</h2>
-      <div>
-        <h3>Trabajadores por empresa</h3>
-        <pre>{JSON.stringify(trabajadoresPorEmpresa, null, 2)}</pre>
+    <div className="kpi-section">
+      <h2 className="kpi-section__title">KPIs</h2>
+      <div className="kpi-section__item">
+        <h3 className="kpi-section__title">Trabajadores por empresa</h3>
+        {renderKpiObject(trabajadoresPorEmpresa)}
       </div>
-      <div>
-        <h3>Trabajadores por área</h3>
-        <pre>{JSON.stringify(trabajadoresPorArea, null, 2)}</pre>
+      <div className="kpi-section__item">
+        <h3 className="kpi-section__title">Trabajadores por área</h3>
+        {renderKpiObject(trabajadoresPorArea)}
       </div>
-      <div>
-        <h3>Gastos por empresa</h3>
-        <pre>{JSON.stringify(gastosPorEmpresa, null, 2)}</pre>
+      <div className="kpi-section__item">
+        <h3 className="kpi-section__title">Gastos por empresa</h3>
+        {renderKpiObject(gastosPorEmpresa)}
       </div>
-      <div>
-        <h3>Gastos por área</h3>
-        <pre>{JSON.stringify(gastosPorArea, null, 2)}</pre>
+      <div className="kpi-section__item">
+        <h3 className="kpi-section__title">Gastos por área</h3>
+        {renderKpiObject(gastosPorArea)}
       </div>
     </div>
   );
 };
 
 export default KpiSection;
+
 
