@@ -11,35 +11,36 @@ const PaginatedTable = ({ data }) => {
 
   return (
     <div className="paginated-table">
-      <table className="paginated-table__table">
-        <thead className="paginated-table__thead">
-          <tr>
-            <th>Empresa</th>
-            <th>Área</th>
-            <th>RUT</th>
-            <th>Nombre</th>
-            <th>Edad</th>
-            <th>Profesión</th>
-            <th>Cargo</th>
-            <th>Sueldo</th>
-          </tr>
-        </thead>
-        <tbody>
-          {currentRows.map((row, index) => (
-            <tr key={index} className="paginated-table__row">
-              <td>{row.empresa}</td>
-              <td>{row.area}</td>
-              <td>{row.rut}</td>
-              <td>{row.nombre}</td>
-              <td>{row.edad}</td>
-              <td>{row.profesion}</td>
-              <td>{row.cargo}</td>
-              <td>{row.sueldo}</td>
+      <div className="paginated-table__scroll-container">
+        <table className="paginated-table__table">
+          <thead className="paginated-table__thead">
+            <tr>
+              <th>Empresa</th>
+              <th>Área</th>
+              <th>RUT</th>
+              <th>Nombre</th>
+              <th>Edad</th>
+              <th>Profesión</th>
+              <th>Cargo</th>
+              <th>Sueldo</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-
+          </thead>
+          <tbody>
+            {currentRows.map((row, index) => (
+              <tr key={index} className="paginated-table__row">
+                <td>{row.empresa}</td>
+                <td>{row.area}</td>
+                <td>{row.rut}</td>
+                <td>{row.nombre}</td>
+                <td>{row.edad}</td>
+                <td>{row.profesion}</td>
+                <td>{row.cargo}</td>
+                <td>{row.sueldo}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <div className="paginated-table__pagination">
         <button
           className="paginated-table__button"

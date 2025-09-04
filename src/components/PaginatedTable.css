@@ -47,6 +47,11 @@
 .paginated-table__table th {
   background-color: #474646;
 }
+.paginated-table__scroll-container {
+  width: 100%;
+  overflow-x: auto; /* permite scroll horizontal si es necesario */
+  -webkit-overflow-scrolling: touch; /* suaviza scroll en móviles */
+}
 
 /* Paginación */
 .paginated-table__pagination {
