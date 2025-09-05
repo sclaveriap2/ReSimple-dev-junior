@@ -3,9 +3,9 @@
   --main-color: #368644;
   --bg-color: rgba(71, 70, 70, 0.8); /* gris con opacidad */
   --text-color: white;
-  --border-radius: 5px;
+  --border-radius: 10px;
   --spacing: 10px;
-  --font-size: 15px;
+  --font-size: 16px;
 }
 
 /* Contenedor principal de KPIs */
@@ -21,13 +21,15 @@
   background-color: rgba(71, 70, 70, 0.8);
   border-radius: var(--border-radius);
   box-shadow: inset 0px 4px 6px rgba(0,0,0,0.3);
-  color: white;;
+  color: white;
+  box-sizing: border-box; /* 🔑 padding incluido en el ancho */
 }
 
 /* Cada KPI individual */
 .kpi-section__item {
   width: 100%;
-  margin-bottom: 15px;
+  border-collapse: collapse;
+  margin-bottom: 20px;
 }
 
 /* Título del KPI */

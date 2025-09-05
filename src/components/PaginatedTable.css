@@ -3,9 +3,9 @@
   --main-color: #368644;
   --bg-color: #f9f9f9;
   --text-color: #333;
-  --border-radius: 5px;
+  --border-radius: 10px;
   --spacing: 10px;
-  --font-size: 14px; /* valor base */
+  --font-size: 16px; /* valor base */
 }
 
 /* Contenedor principal */
@@ -21,14 +21,14 @@
   background-color: rgba(71, 70, 70, 0.8);
   border-radius: var(--border-radius);
   box-shadow: inset 0px 4px 6px rgba(0,0,0,0.3);
-  font-size: clamp(6px, 1.5vw, 12px); /* letra dinámica */
+  font-size: clamp(10px, 1.5vw, 16px); /* letra dinámica */
 }
 
 /* Tabla */
 .paginated-table__table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .paginated-table__table th,
@@ -39,10 +39,7 @@
   color: white;
   font-size: inherit; /* hereda tamaño dinámico */
 }
-.paginated-table__table th:nth-child(3), /* RUT */
-.paginated-table__table td:nth-child(3) {
-  width: 150px; /* aumentar para que no se corte */
-}
+
 
 .paginated-table__table th {
   background-color: #474646;
@@ -103,7 +100,7 @@
   .paginated-table__button,
   .paginated-table__export-button {
     font-size: clamp(2px, 3vw, 6px);
-    padding: 5px 8px;
+    padding: 6px 8px;
   }
 }
 
@@ -113,7 +110,7 @@
   .paginated-table__button,
   .paginated-table__export-button {
     font-size: 2pxpx;
-    padding: 4px 6px;
+    padding: 6px 6px;
   }
 }
 
