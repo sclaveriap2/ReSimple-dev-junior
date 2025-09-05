@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { getUniqueCompanies, getUniqueAreas, applyFilters } from "../utils/filterUtils";
 import "./Filter.css"; // Importar estilos
+import "./Global.css";
 
 const Filter = ({ data, onFilter }) => {
   const [selectedCompanies, setSelectedCompanies] = useState([]);
@@ -34,7 +35,7 @@ const Filter = ({ data, onFilter }) => {
   };
 
   return (
-    <div className="filter">
+    <div className="section-container filter">
       <div className="filter__group">
         <h4 className="filter__group-title">Empresas:</h4>
         <div className="filter__button-group">

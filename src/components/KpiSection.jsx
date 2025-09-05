@@ -1,4 +1,5 @@
 import "./KpiSection.css";
+import "./Global.css";
 import { calcularKPIs } from "../utils/kpiUtils";
 
 const renderKpiObject = (obj) => {
@@ -17,7 +18,7 @@ const KpiSection = ({ data }) => {
   const { trabajadoresPorEmpresa, trabajadoresPorArea, gastosPorEmpresa, gastosPorArea } = calcularKPIs(data);
 
   return (
-    <div className="kpi-section">
+    <div className="section-container kpi-section">
       <h2 className="kpi-section__title">KPIs</h2>
       <div className="kpi-section__item">
         <h3 className="kpi-section__title">Trabajadores por empresa</h3>

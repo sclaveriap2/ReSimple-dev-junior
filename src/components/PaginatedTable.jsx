@@ -2,6 +2,7 @@ import { useState } from "react";
 import { exportToExcel } from "../utils/exportToExcel";
 import { paginateData } from "../utils/paginationUtils";
 import "./PaginatedTable.css"; // Asegúrate de importar el CSS
+import "./Global.css";
 
 const PaginatedTable = ({ data }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -10,7 +11,7 @@ const PaginatedTable = ({ data }) => {
   const { currentRows, totalPages } = paginateData(data, currentPage, rowsPerPage);
 
   return (
-    <div className="paginated-table">
+    <div className="section-container paginated-table">
       <div className="paginated-table__scroll-container">
         <table className="paginated-table__table">
           <thead className="paginated-table__thead">
