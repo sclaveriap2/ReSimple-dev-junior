@@ -1,15 +1,19 @@
 import { readExcelData } from "./readExcel";
 import { readJsonData } from "./readJson";
 
+// Función principal que combina los datos de Excel y JSON
 export const getCombinedData = async () => {
-  const workers = await readExcelData();
-  const empresas = await readJsonData();
+  const workers = await readExcelData(); // Leer trabajadores desde Excel
+  const empresas = await readJsonData();// Leer información de empresas desde JSON
 
-  console.log("Workers:", workers); // <--- revisa que traiga datos
-  console.log("Empresas:", empresas); // <--- revisa que traiga datos
+  console.log("Workers:", workers); // Verificar datos de trabajadores en consola
+  console.log("Empresas:", empresas); // Verificar datos de empresas en consola
 
+  // Combinar la información de trabajadores y empresas
   return workers.map(worker => {
+    // Buscar la empresa correspondiente del trabajador
     const empresa = empresas.EMPRESAS.find(e => e.ID_EMPRESA == worker.ID_EMPRESA);
+    // Buscar el área correspondiente dentro de la empresa
     const area = empresa?.AREAS.find(a => a.ID_AREA == worker.ID_AREA);
 
     return {

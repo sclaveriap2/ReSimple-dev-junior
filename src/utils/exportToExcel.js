@@ -1,6 +1,8 @@
 import * as XLSX from "xlsx";
 
+// Función para exportar un array de objetos a un archivo Excel
 export const exportToExcel = (data, fileName = "tabla.xlsx") => {
+  // Validar que haya datos para exportar
   if (!data || !data.length) {
     alert("No hay datos para exportar");
     return;
@@ -13,6 +15,6 @@ export const exportToExcel = (data, fileName = "tabla.xlsx") => {
   const workbook = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(workbook, worksheet, "Datos");
 
-  // Descargar archivo
+  // Descargar el archivo Excel con el nombre especificado
   XLSX.writeFile(workbook, fileName);
 };
