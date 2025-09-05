@@ -88,7 +88,7 @@ vite.config.js
 
 1. Clonar el repositorio:
 
-git clone <url-del-repositorio>
+git clone (https://github.com/sclaveriap2/ReSimple-dev-junior.git)
 
 2. Instalar dependencias
 
