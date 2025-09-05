@@ -2,11 +2,13 @@ import "./KpiSection.css";
 import { calcularKPIs } from "../utils/kpiUtils";
 import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip } from "recharts";
 
+// Colores utilizados para los segmentos de los gráficos de torta
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#A569BD", "#FF6384"];
 
+// Función para renderizar los datos de un KPI como filas con total
 const renderKpiObject = (obj) => {
   const entries = Object.entries(obj);
-  const total = entries.reduce((sum, [, value]) => sum + Number(value), 0);
+  const total = entries.reduce((sum, [, value]) => sum + Number(value), 0);// Suma total de los valores
 
   return (
     <div className="kpi-section__content">
@@ -22,11 +24,12 @@ const renderKpiObject = (obj) => {
   );
 };
 
+// Función para renderizar un gráfico de torta a partir de un objeto KPI
 const renderPieChart = (obj) => {
   const data = Object.entries(obj).map(([name, value]) => ({ name, value }));
   const total = data.reduce((sum, d) => sum + d.value, 0);
   const dataWithPercent = data.map(d => ({ ...d, percent: ((d.value / total) * 100).toFixed(1) }));
-
+  
   return (
     <ResponsiveContainer width="100%" height={350}>
       <PieChart>
@@ -36,7 +39,7 @@ const renderPieChart = (obj) => {
           nameKey="name"
           cx="50%"
           cy="50%"
-          outerRadius={120} // puedes ajustar para dar más espacio vertical
+          outerRadius={80} // radio del grafico
           label={(entry) => `${entry.name}: ${entry.percent}%`}
         >
           {dataWithPercent.map((entry, index) => (
@@ -49,7 +52,9 @@ const renderPieChart = (obj) => {
   );
 };
 
+// Componente principal que muestra la sección de KPIs con gráficos
 const KpiSection = ({ data }) => {
+  // Desestructurar KPIs calculados desde los datos
   const { trabajadoresPorEmpresa, trabajadoresPorArea, gastosPorEmpresa, gastosPorArea } = calcularKPIs(data);
 
   return (

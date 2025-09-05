@@ -5,25 +5,45 @@ import "./PaginatedTable.css"; // Asegúrate de importar el CSS
 import "./Global.css";
 
 const PaginatedTable = ({ data }) => {
+  // Estado para la página actual
   const [currentPage, setCurrentPage] = useState(1);
-  const rowsPerPage = 10;
+  // Estado para la cantidad de filas por página
+  const [rowsPerPage, setRowsPerPage] = useState(10); 
 
+   // Obtener las filas actuales según la página y total de páginas
   const { currentRows, totalPages } = paginateData(data, currentPage, rowsPerPage);
 
   return (
     <div className="section-container paginated-table">
+      <div className="paginated-table__controls">
+        <label>
+          Filas por página:{" "}
+          <select
+            value={rowsPerPage}
+            onChange={(e) => {
+              setRowsPerPage(Number(e.target.value));
+              setCurrentPage(1); // Reinicia a la primera página al cambiar filas por página
+            }}
+          >
+            <option value={5}>5</option>
+            <option value={10}>10</option>
+            <option value={20}>20</option>
+            <option value={50}>50</option>
+          </select>
+        </label>
+      </div>
       <div className="paginated-table__scroll-container">
         <table className="paginated-table__table">
           <thead className="paginated-table__thead">
             <tr>
-              <th>Empresa</th>
-              <th>Área</th>
-              <th>RUT</th>
-              <th>Nombre</th>
-              <th>Edad</th>
-              <th>Profesión</th>
-              <th>Cargo</th>
-              <th>Sueldo</th>
+              <th>NOMBRE_EMPRESA</th>
+              <th>NOMBRE_AREA </th>
+              <th>RUT_TRABAJADOR </th>
+              <th>NOMBRE_TRABAJADOR </th>
+              <th>EDAD </th>
+              <th>PROFESION </th>
+              <th>CARGO </th>
+              <th>SUELDO </th>
             </tr>
           </thead>
           <tbody>

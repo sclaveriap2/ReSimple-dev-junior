@@ -1,7 +1,7 @@
 /* Variables globales */
 :root {
   --main-color: #368644;
-  --bg-color: #f9f9f9;
+  --bg-color: #368644;
   --text-color: #333;
   --border-radius: 10px;
   --spacing: 10px;
@@ -90,6 +90,28 @@
   transition: background-color 0.3s ease;
   margin-top: 10px;
   font-size: inherit; /* hereda tamaño dinámico */
+}
+/*Selector de paginación*/
+.paginated-table__controls {
+  display: flex;
+  justify-content: center; /* centrar horizontalmente */
+  margin-bottom: 15px;
+}
+
+.paginated-table__controls select {
+  background-color: var(--main-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 8px 12px;
+  font-size: var(--font-size);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.paginated-table__controls select:hover {
+  background-color: darken(#368644, 20%);
 }
 
 /* Responsividad----------------------------------------------------------------------*/

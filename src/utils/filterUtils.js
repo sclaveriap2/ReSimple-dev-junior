@@ -17,12 +17,21 @@ export const getUniqueAreas = (data) => {
 };
 
 /**
+ * Obtener sueldos únicas
+ * @param {Array} data
+ * @returns {Array}
+ */
+export const getUniqueSueldos = (data) => {
+  return [...new Set(data.map((row) => row.sueldo))];
+};
+
+/**
  * Aplica los filtros seleccionados
  * @param {Array} data - Lista de trabajadores
  * @param {Object} filters - { empresas, areas, nombre, rut }
  * @returns {Array}
  */
-export const applyFilters = (data, { empresas, areas, nombre, rut }) => {
+export const applyFilters = (data, { empresas, areas, nombre, rut, sueldoMin, sueldoMax}) => {
   let filtered = data;
 
   // Filtrar por empresas
@@ -50,6 +59,16 @@ export const applyFilters = (data, { empresas, areas, nombre, rut }) => {
       const rowRut = row.rut.replace(/\./g, "").replace(/-/g, "").toLowerCase();
       return rowRut.includes(normalizedRut);
     });
+  }
+
+ // Filtrar por sueldo mínimo
+  if (sueldoMin != null && sueldoMin !== "") {
+    filtered = filtered.filter(row => row.sueldo >= sueldoMin);
+  }
+
+  // Filtrar por sueldo máximo
+  if (sueldoMax != null && sueldoMax !== "") {
+    filtered = filtered.filter(row => row.sueldo <= sueldoMax);
   }
 
   return filtered;

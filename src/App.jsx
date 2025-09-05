@@ -5,16 +5,15 @@ import KpiSection from "./components/KpiSection";
 import Filter from "./components/Filter";
 
 function App() {
-  const [data, setData] = useState([]); // data completa
-  const [dataFiltered, setDataFiltered] = useState([]); // data que verá la tabla
-
+  const [data, setData] = useState([]);// Estado para almacenar toda la data
+  const [dataFiltered, setDataFiltered] = useState([]); // Estado para almacenar la data filtrada que se muestra en la tabla
   useEffect(() => {
     const fetchData = async () => {
-      const result = await getCombinedData();
-      setData(result);
-      setDataFiltered(result); // inicializa la tabla con toda la data
+      const result = await getCombinedData();// Obtener la data combinada
+      setData(result);// Guardar data completa
+      setDataFiltered(result); // Inicializar tabla con toda la data
     };
-    fetchData();
+    fetchData();// Se ejecuta solo una vez al montar el componente
   }, []);
 
   return (
