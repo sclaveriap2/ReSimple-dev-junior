@@ -1,6 +1,6 @@
 import "./KpiSection.css";
 import { calcularKPIs } from "../utils/kpiUtils";
-import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
+import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip } from "recharts";
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#A569BD", "#FF6384"];
 
@@ -28,22 +28,24 @@ const renderPieChart = (obj) => {
   const dataWithPercent = data.map(d => ({ ...d, percent: ((d.value / total) * 100).toFixed(1) }));
 
   return (
-    <PieChart width={550} height={350}>
-      <Pie
-        data={dataWithPercent}
-        dataKey="value"
-        nameKey="name"
-        cx="50%"
-        cy="50%"
-        outerRadius={120} // puedes ajustar para dar más espacio vertical
-        label={(entry) => `${entry.name}: ${entry.percent}%`}
-      >
-        {dataWithPercent.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-        ))}
-      </Pie>
-      <Tooltip formatter={(value, name, props) => [`${value} (${props.payload.percent}%)`, name]} />
-    </PieChart>
+    <ResponsiveContainer width="100%" height={350}>
+      <PieChart>
+        <Pie
+          data={dataWithPercent}
+          dataKey="value"
+          nameKey="name"
+          cx="50%"
+          cy="50%"
+          outerRadius={120} // puedes ajustar para dar más espacio vertical
+          label={(entry) => `${entry.name}: ${entry.percent}%`}
+        >
+          {dataWithPercent.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+          ))}
+        </Pie>
+        <Tooltip formatter={(value, name, props) => [`${value} (${props.payload.percent}%)`, name]} />
+      </PieChart>
+    </ResponsiveContainer>
   );
 };
 

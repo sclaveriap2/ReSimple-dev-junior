@@ -64,7 +64,7 @@
 }
 
 .kpi-section__left {
-  flex: 1 1 400px; /* mayor mínimo */
+  flex: 1 1 500px; /* mayor mínimo */
 }
 
 .kpi-section__right {
@@ -102,9 +102,7 @@
 }
 /* Responsividad */
 @media (max-width: 768px) {
-  .kpi-section__dual {
-    flex-direction: column;
-  }
+  
 
   .kpi-section__right {
     margin-top: 15px;
