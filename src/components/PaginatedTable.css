@@ -5,7 +5,7 @@
   --text-color: #333;
   --border-radius: 10px;
   --spacing: 10px;
-  --font-size: 16px; /* valor base */
+  --font-size: 16px;
 }
 
 /* Contenedor principal */
@@ -57,6 +57,7 @@
   margin-bottom: 10px;
 }
 
+/*Boton para moverse en paginas de tabla*/
 .paginated-table__button {
   padding: 6px 12px;
   border-radius: var(--border-radius);
@@ -68,11 +69,12 @@
   font-size: inherit; /* hereda tamaño dinámico */
 }
 
+/*Boton desactivado*/
 .paginated-table__button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
-
+/*Desactivado hover en boton no funcional*/
 .paginated-table__button:hover:not(:disabled) {
   background-color: #00796b;
 }
@@ -90,7 +92,7 @@
   font-size: inherit; /* hereda tamaño dinámico */
 }
 
-/* Responsividad para pantallas muy pequeñas */
+/* Responsividad----------------------------------------------------------------------*/
 @media (max-width: 280px) {
   .paginated-table {
     padding: 15px;
@@ -113,4 +115,4 @@
     padding: 6px 6px;
   }
 }
-
+/*------------------------------------------------------------------------------------*/

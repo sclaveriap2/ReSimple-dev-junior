@@ -1,3 +1,4 @@
+/*parametros generales index*/
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -7,8 +8,7 @@
   color: rgba(255, 255, 255, 0.87);
 
   /* Fondo verde ReSimple */
-  --resimple-green: #368644; /* verde claro ReSimple */
-  background-color: var(--resimple-green);
+  background-color: #368644; 
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -16,19 +16,20 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/*Cuerpo general del documento*/
 body {
   margin: 0;
   display: block;
-  flex-direction: column; /* para apilar elementos verticalmente */
-  align-items: center; /* centrado horizontal */
-  justify-content: flex-start; /* centrado vertical solo si se quiere */
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: flex-start; 
   min-width: 240px;
   min-height: 100vh;
   padding: 20px;
   box-sizing: border-box;
 }
 
-
+/*Responsividad-----------------------------------------------------------------------*/
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -46,3 +47,4 @@ body {
     font-size: 2em;
   }
 }
+/*------------------------------------------------------------------------------------*/

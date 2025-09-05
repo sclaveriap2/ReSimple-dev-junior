@@ -1,8 +1,7 @@
 /* Variables globales */
 :root {
   --main-color: #368644;
-  --bg-color: rgba(71, 70, 70, 0.8); /* gris con opacidad */
-  --text-color: white;
+  --bg-color: rgba(71, 70, 70, 0.8); 
   --border-radius: 10px;
   --spacing: 10px;
   --font-size: 16px;
@@ -12,11 +11,11 @@
 .kpi-section {
   display: flex;
   flex-direction: column;
-  align-items: stretch; /* ocupa todo el ancho */
+  align-items: stretch;
   justify-content: flex-start;
   margin: 20px auto;
-  padding: 25px; /* un poco más de padding */
-  max-width: 1000px; /* ancho mayor para dar más espacio */
+  padding: 25px; 
+  max-width: 1000px; 
   width: 95%;
   background-color: rgba(71, 70, 70, 0.8);
   border-radius: var(--border-radius);
@@ -40,11 +39,11 @@
   margin-bottom: 5px;
 }
 
-/* Contenido del KPI */
+
 /* Contenido dentro de cada KPI */
 .kpi-section__content {
   background-color: rgba(0, 0, 0, 0.2);
-  padding: 15px; /* más espacio interno */
+  padding: 15px; 
   border-radius: var(--border-radius);
   font-family: monospace;
   white-space: pre-wrap;
@@ -58,26 +57,26 @@
 .kpi-section__dual {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px; /* más espacio entre columnas */
+  gap: 30px; 
   align-items: flex-start;
-  margin-bottom: 25px; /* más separación entre secciones */
+  margin-bottom: 25px; 
 }
-
+/*Sección kpi izquierda*/
 .kpi-section__left {
-  flex: 1 1 500px; /* mayor mínimo */
+  flex: 1 1 500px; 
 }
-
+/*Sección kpi derecha*/
 .kpi-section__right {
-  flex: 1 1 500px; /* mayor mínimo */
+  flex: 1 1 500px; 
   display: flex;
   justify-content: center;
   align-items: center;
   padding-top: 20px;
-  min-height: 350px; /* 🔑 aumentar altura mínima */
+  min-height: 350px; 
 }
 
 
-/* Responsividad */
+/* Responsividad ----------------------------------------------------------------------*/
 @media (max-width: 480px) {
   .kpi-section {
     padding: 15px;
@@ -100,12 +99,10 @@
     padding: 6px;
   }
 }
-/* Responsividad */
 @media (max-width: 768px) {
-  
-
   .kpi-section__right {
     margin-top: 15px;
-    min-height: 300px; /* ajustar altura en móviles */
+    min-height: 300px; 
   }
 }
+/*-------------------------------------------------------------------------------------*/
